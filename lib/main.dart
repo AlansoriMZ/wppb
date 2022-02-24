@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -49,16 +51,23 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 1;
-  String _text = "Ganjil";
+  String _text = "Angka";
 
   void _incrementCounter() {
     setState(() {
       _counter++;
       
-      _text = "Bilangan Genap kelipatan 3 : ";
-      for(int i=1; i<=_counter; i++){
-        if(i%6 == 0){
-          _text += '${i}, ';
+      int i, j, mod;
+      _text = "Bilangan Prima : ";
+      for(i=2; i<=_counter; i++){
+        mod=1;
+        for(j=2;j<i;j++){
+          if(i%j==0){
+            mod=0;
+          }
+        }
+        if(mod==1){
+          _text += '${i},';
         }
       }
     });
